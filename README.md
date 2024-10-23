@@ -92,3 +92,33 @@ import secrets
 
 auth_secret = secrets.token_urlsafe(32)
 ```
+
+## Getting Started
+
+Follow these steps to set up the project on your local machine.
+
+```bash
+# Clone the repository to your local machine
+git clone git@github.com:mxpadidar/fastapi-so.git
+cd fastapi-so
+
+# Install libpq5 for PostgreSQL support with psycopg 3
+sudo apt install libpq5
+
+# Create a virtual environment and install dependencies using Poetry
+poetry env use python3.13
+poetry install --no-root
+
+# Rename the `.env.example` to `.env` and update the environment variables:
+mv .env.example .env
+
+# Run Docker Services
+docker compose up -d
+
+# Apply Database Migrations using Alembic
+poetry run alembic upgrade head
+
+# Start the FastAPI Application
+cd src
+poetry run python main.py
+```
