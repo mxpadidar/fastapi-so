@@ -95,30 +95,47 @@ auth_secret = secrets.token_urlsafe(32)
 
 ## Getting Started
 
-Follow these steps to set up the project on your local machine.
+This repository is set up as a **GitHub Template**, which means you can use it to easily generate your own project without copying any commit history or `.git` metadata.
 
-```bash
-# Clone the repository to your local machine
-git clone git@github.com:mxpadidar/fastapi-so.git
-cd fastapi-so
+### Using the Repository as a Template
 
-# Install libpq5 for PostgreSQL support with psycopg 3
-sudo apt install libpq5
+1. **Click on "Use this template"**:
+   - At the top of the repository page, click the green **"Use this template"** button.
 
-# Create a virtual environment and install dependencies using Poetry
-poetry env use python3.13
-poetry install --no-root
+2. **Create a New Repository**:
+   - GitHub will prompt you to name your new repository. Enter a unique repository name and optionally a description.
+   - Choose whether the new repository should be public or private.
 
-# Rename the `.env.example` to `.env` and update the environment variables:
-mv .env.example .env
+3. **Clone Your New Repository**:
+   - Once GitHub has created the new repository for you, clone it to your local machine:
+     ```bash
+     git clone git@github.com:your-username/your-new-repo.git
+     cd your-new-repo
+     ```
 
-# Run Docker Services
-docker compose up -d
+4. **Set Up the Project**:
+   - Follow these steps to set up the project on your local machine:
 
-# Apply Database Migrations using Alembic
-poetry run alembic upgrade head
+   ```bash
+   # Install libpq5 for PostgreSQL support with psycopg 3
+   sudo apt install libpq5
 
-# Start the FastAPI Application
-cd src
-poetry run python main.py
-```
+   # Create a virtual environment and install dependencies using Poetry
+   poetry env use python3.13
+   poetry install --no-root
+
+   # Rename the `.env.example` to `.env` and update the environment variables:
+   mv .env.example .env
+
+   # Run Docker Services
+   docker compose up -d
+
+   # Apply Database Migrations using Alembic
+   poetry run alembic upgrade head
+
+   # Start the FastAPI Application
+   cd src
+   poetry run python main.py
+   ```
+
+By following these steps, you’ll generate a clean, fully-functional FastAPI project and be ready to start developing immediately!
