@@ -28,11 +28,11 @@ test-coverage:
 
 # Bring up Docker services using docker-compose
 docker-up:
-	@docker-compose up -d
+	@docker compose up -d
 
 # Take down Docker services using docker-compose
 docker-down:
-	@docker-compose down
+	@docker compose down
 
 # Run all pre-commit hooks on all files
 run-precommit:
