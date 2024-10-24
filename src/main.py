@@ -9,6 +9,8 @@ from account.entrypoints.routes import router as account_router
 from core import settings
 from core.errors import BaseError
 from core.logger import Logger
+from shared.adapters.mappers import start_shared_mappers
+from shared.entrypoints.routes import router as shared_router
 
 logger = Logger("main")
 
@@ -16,6 +18,7 @@ logger = Logger("main")
 @asynccontextmanager
 async def lifespan(_: FastAPI):
     start_account_mappers()
+    start_shared_mappers()
     yield
     logger.info("Application shutdown")
 
@@ -24,6 +27,7 @@ app = FastAPI(lifespan=lifespan, title=f"{settings.APP_NAME} in {settings.APP_EN
 
 
 app.include_router(account_router)
+app.include_router(shared_router)
 
 
 app.add_middleware(

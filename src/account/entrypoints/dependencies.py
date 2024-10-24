@@ -1,8 +1,9 @@
 from fastapi import Depends, Request
 
 from account.adapters.orm_repos import UserOrmRepo
+from account.domain import errors
 from account.domain.entities import User
-from account.service_layer import errors, utils
+from account.service_layer import utils
 from core import settings
 from core.database import get_db
 

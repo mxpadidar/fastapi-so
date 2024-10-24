@@ -3,7 +3,8 @@ from typing import TypedDict, Unpack
 
 import jwt
 
-from account.service_layer import errors, types
+from account.domain import errors
+from account.service_layer import types
 from account.service_layer.dtos import TokenDto
 
 

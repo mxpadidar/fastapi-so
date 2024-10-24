@@ -1,6 +1,6 @@
 from typing import Type
 
-from account.domain.entities.user import User
+from account.domain.entities import User
 from core.base_classes.abstract_repo import AbstractRepo
 
 

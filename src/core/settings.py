@@ -30,6 +30,10 @@ DB_PASSWORD = os.getenv("POSTGRES_PASSWORD", "postgres")
 DB_NAME = os.getenv("POSTGRES_DB", "postgres")
 
 
+MINIO_ENDPOINT = os.getenv("MINIO_ENDPOINT", "localhost:9000")
+MINIO_ACCESS_KEY = os.getenv("MINIO_ACCESS_KEY", "minio")
+MINIO_SECRET_KEY = os.getenv("MINIO_SECRET_KEY", "minio123")
+
 DATABASE_CONFIG = {
     "driver": DB_DRIVER,
     "host": DB_HOST,
@@ -45,4 +49,10 @@ TOKEN_CONFIG = {
     "algorithm": JWT_ALGORITHM,
     "access_exp_min": JWT_ACCESS_EXP_MIN,
     "refresh_exp_day": JWT_REFRESH_EXP_DAY,
+}
+
+MINIO_CONFIG = {
+    "endpoint": MINIO_ENDPOINT,
+    "access_key": MINIO_ACCESS_KEY,
+    "secret_key": MINIO_SECRET_KEY,
 }
