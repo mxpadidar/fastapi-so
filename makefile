@@ -1,4 +1,4 @@
-.PHONY: install-dependencies start-app create-migration apply-migrations rollback-migration run-tests test-coverage docker-up docker-down run-precommit view-structure
+.PHONY: install-dependencies start-app create-migration apply-migrations rollback-migration run-tests test-coverage docker-up docker-down run-precommit view-structure clean-cache
 
 # Install project dependencies using Poetry
 install-dependencies:
@@ -42,3 +42,8 @@ run-precommit:
 # Display the project structure, excluding unnecessary files
 view-structure:
 	@tree -a -I ".venv|.git|.data|__pycache__|.mypy_cache|*.pyc|*.pyo|alembic|htmlcov|*.egg-info|*.egg|*.tox|*.pytest_cache|*.mypy"
+
+# Delete __pycache__ and .mypy_cache folders
+clean-cache:
+	@find . -type d -name "__pycache__" -exec rm -r {} +
+	@find . -type d -name ".mypy_cache" -exec rm -r {} +

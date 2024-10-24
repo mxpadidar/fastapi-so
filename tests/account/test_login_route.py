@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 
-from account.entities.user import User
+from account.domain.entities.user import User
 
 
 def test_login_route_success(client: TestClient, user: User):

@@ -1,15 +1,14 @@
 from abc import ABC, abstractmethod
-from typing import Type
 
 
-class AbstractEntity(ABC):
+class AbstractEntity[T](ABC):
 
     @abstractmethod
     def to_dict(self, **kwargs) -> dict:
         raise NotImplementedError
 
     @classmethod
-    def from_dict(cls, **kwargs) -> Type["AbstractEntity"]:
+    def from_dict(cls, **kwargs) -> T:
         raise NotImplementedError
 
     @classmethod

@@ -1,7 +1,7 @@
 from fastapi.testclient import TestClient
 
-from account.entities.user import User
-from account.services.auth_service import AuthService
+from account.domain.entities.user import User
+from account.service_layer.auth_service import AuthService
 
 URL = "/accounts/me"
 

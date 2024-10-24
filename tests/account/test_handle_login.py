@@ -1,9 +1,9 @@
 import pytest
 
-from account.entities.user import User
+from account.domain.entities.user import User
 from account.handlers.login_handler import HandleLoginParams, handle_login
 from account.repositories.user_repo import UserRepo
-from account.services.auth_service import AuthService
+from account.service_layer.auth_service import AuthService
 from core.errors import UnAuthenticatedError
 
 

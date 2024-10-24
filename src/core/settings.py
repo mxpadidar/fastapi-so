@@ -14,19 +14,35 @@ APP_VERSION = os.getenv("APP_VERSION", "0.1.0")
 
 ALLOWED_ORIGINS = ["http://localhost:*"]
 
-DATABASE = {
-    "driver": os.getenv("POSTGRES_DRIVER", "postgresql+psycopg"),
-    "host": os.getenv("POSTGRES_HOST", "localhost"),
-    "db": os.getenv("POSTGRES_DB", "postgres"),
-    "user": os.getenv("POSTGRES_USER", "postgres"),
-    "password": os.getenv("POSTGRES_PASSWORD", "postgres"),
-    "port": int(os.getenv("POSTGRES_PORT", 5432)),
+PASSWORD_SALT = os.getenv("PASSWORD_SALT", "salt")
+
+SECRET_KEY = os.getenv("SECRET_KEY", "secret-key")
+
+JWT_ALGORITHM = os.getenv("JWT_ALGORITHM", "HS256")
+JWT_ACCESS_EXP_MIN = int(os.getenv("JWT_ACCESS_EXP_MIN", "60"))
+JWT_REFRESH_EXP_DAY = int(os.getenv("JWT_REFRESH_EXP_DAY", "7"))
+
+DB_DRIVER = os.getenv("DB_DRIVER", "postgresql+psycopg")
+DB_HOST = os.getenv("DB_HOST", "localhost")
+DB_PORT = os.getenv("DB_PORT", "5432")
+DB_USER = os.getenv("POSTGRES_USER", "postgres")
+DB_PASSWORD = os.getenv("POSTGRES_PASSWORD", "postgres")
+DB_NAME = os.getenv("POSTGRES_DB", "postgres")
+
+
+DATABASE_CONFIG = {
+    "driver": DB_DRIVER,
+    "host": DB_HOST,
+    "port": DB_PORT,
+    "user": DB_USER,
+    "password": DB_PASSWORD,
+    "db": DB_NAME,
 }
 
-AUTH_CONFIG = {
-    "secret": os.getenv("AUTH_SECRET", "AUTH_SECRET"),
-    "algorithm": os.getenv("AUTH_ALGORITHM", "HS256"),
-    "access_exp_min": int(os.getenv("AUTH_ACCESS_EXP_MIN", 60)),
-    "refresh_exp_day": int(os.getenv("AUTH_REFRESH_EXP_DAY", 7)),
-    "pass_salt": os.getenv("AUTH_PASS_SALT", "salt"),
+
+TOKEN_CONFIG = {
+    "secret_key": SECRET_KEY,
+    "algorithm": JWT_ALGORITHM,
+    "access_exp_min": JWT_ACCESS_EXP_MIN,
+    "refresh_exp_day": JWT_REFRESH_EXP_DAY,
 }

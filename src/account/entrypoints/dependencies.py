@@ -1,25 +1,19 @@
 from fastapi import Depends, Request
 
-from account.repositories.user_repo import UserRepo
-from account.services.auth_service import AuthService
+from account.adapters.orm_repos import UserOrmRepo
+from account.domain.entities import User
+from account.service_layer import errors, utils
 from core import settings
 from core.database import get_db
 
 
-def get_user_repo(db=Depends(get_db)) -> UserRepo:
-    return UserRepo(db)
+def get_current_user(request: Request, db=Depends(get_db)) -> User:
+    user_repo = UserOrmRepo(db)
+    token = utils.authorization_header_parser(request.headers.get("Authorization"))
+    token_parser = utils.token_parser_closure(**settings.TOKEN_CONFIG)
+    user_id = token_parser(token)
+    user = user_repo.get(id=user_id)
+    if not user:
+        raise errors.UnAuthenticatedError("User not found")
 
-
-def get_auth_service():
-    return AuthService(**settings.AUTH_CONFIG)
-
-
-def get_current_user(
-    request: Request,
-    auth_service: AuthService = Depends(get_auth_service),
-    user_repo: UserRepo = Depends(get_user_repo),
-):
-    token = auth_service.get_bearer_token(request.headers.get("Authorization", ""))
-    user_id = auth_service.decode_token(token)
-    user = user_repo.get_or_raise_not_found(id=user_id)
     return user

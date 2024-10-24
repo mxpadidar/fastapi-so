@@ -1,10 +1,10 @@
 import pytest
 from fastapi.testclient import TestClient
 
-from account.entities.user import User
+from account.domain.entities.user import User
 from account.orm.mappers import start_mappers
 from account.repositories.user_repo import UserRepo
-from account.services.auth_service import AuthService
+from account.service_layer.auth_service import AuthService
 from core import settings
 from core.database import session_maker
 from main import app
@@ -43,7 +43,7 @@ def user_repo(db):
 def user(user_repo: UserRepo, auth_service: AuthService):
     user = User(
         email="test_user@mail.com",
-        password=auth_service.get_password_hash("password"),
+        password_hash=auth_service.get_password_hash("password"),
         first_name="firstName",
         last_name="lastName",
     )

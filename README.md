@@ -100,20 +100,25 @@ This repository is set up as a **GitHub Template**, which means you can use it t
 ### Using the Repository as a Template
 
 1. **Click on "Use this template"**:
+
    - At the top of the repository page, click the green **"Use this template"** button.
 
 2. **Create a New Repository**:
+
    - GitHub will prompt you to name your new repository. Enter a unique repository name and optionally a description.
    - Choose whether the new repository should be public or private.
 
 3. **Clone Your New Repository**:
+
    - Once GitHub has created the new repository for you, clone it to your local machine:
+
      ```bash
      git clone git@github.com:your-username/your-new-repo.git
      cd your-new-repo
      ```
 
 4. **Set Up the Project**:
+
    - Follow these steps to set up the project on your local machine:
 
    ```bash

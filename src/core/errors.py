@@ -1,8 +1,8 @@
 class BaseError(Exception):
-    def __init__(self, message: str, http_status_code: int) -> None:
+    def __init__(self, message: str, code: int) -> None:
         super().__init__(message)
         self.message = message
-        self.status_code = http_status_code
+        self.code = code
 
 
 class NotFoundError(BaseError):
@@ -13,11 +13,6 @@ class NotFoundError(BaseError):
 class ConflictError(BaseError):
     def __init__(self, message: str = "Resource already exists") -> None:
         super().__init__(message, 409)
-
-
-class UnAuthenticatedError(BaseError):
-    def __init__(self, message: str = "Invalid credentials") -> None:
-        super().__init__(message, 401)
 
 
 class ValidationError(BaseError):

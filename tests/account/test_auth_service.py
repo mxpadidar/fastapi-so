@@ -5,7 +5,7 @@ import jwt
 import pytest
 from freezegun import freeze_time
 
-from account.services.auth_service import AuthService
+from account.service_layer.auth_service import AuthService
 from core.errors import UnAuthenticatedError
 
 

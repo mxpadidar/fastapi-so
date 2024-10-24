@@ -3,7 +3,7 @@ from collections.abc import Generator
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, registry, sessionmaker
 
-from core.settings import DATABASE as DB
+from core.settings import DATABASE_CONFIG as DB
 
 conn_string = f"{DB['driver']}://{DB['user']}:{DB['password']}@{DB['host']}:{DB['port']}/{DB['db']}"
 

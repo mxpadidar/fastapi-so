@@ -4,7 +4,7 @@ from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config, pool
 
-from account.orm import tables as account_tables
+from account.adapters import tables
 from alembic import context
 from core.database import conn_string, mapper_registry
 
